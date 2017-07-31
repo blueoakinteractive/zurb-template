@@ -1,0 +1,41 @@
+name: ZURB Template
+type: theme
+description: A Drupal 8 theme based on ZURB Template powered by ZURB Foundation 6
+core: 8.x
+
+# Screenshot as seen on admin/appearance
+screenshot: dist/assets/images/screenshot.jpg
+
+# Libraries
+libraries:
+  - zurb_template/global
+
+# Use Classy as a base theme https://www.drupal.org/theme-guide/8/classy
+base theme: classy
+
+# Remove conflicting Classy base theme CSS files
+stylesheets-remove:
+  - core/themes/classy/css/components/menu.css
+
+# Regions
+regions:
+  page_top: 'Page top'
+  header: Header
+  meta_header: 'Meta header'
+  help: Help
+  highlighted: Highlighted
+  content: Content
+  footer: Footer
+  left_off_canvas: 'Left off canvas'
+  right_off_canvas: 'Right off canvas'
+  page_bottom: 'Page bottom'
+regions_hidden:
+  page_top: 'Page Top'
+  page_bottom: 'Page bottom'
+
+# Features
+features:
+  - logo
+  - name
+  - slogan
+  - favicon

@@ -1,0 +1,15 @@
+global:
+  version: VERSION
+  css:
+    base:
+      dist/assets/css/foundation.min.css: {}
+      dist/assets/css/motion-ui.min.css: {}
+      dist/assets/css/zurb-template.css: {}
+  js:
+    dist/assets/js/foundation.min.js: {}
+    dist/assets/js/motion-ui.min.js: {}
+    dist/assets/js/zurb-template.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
