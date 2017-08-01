@@ -21,10 +21,10 @@ function zurb_template_status_messages($variables) {
 
   foreach ($display as $type => $messages) {
     if (isset($status_mapping[$type])) {
-      $output .= "<div class=\"messages messages--$status_mapping[$type]\">\n";
+      $output .= "<div class=\"callout $status_mapping[$type]\"  data-closable>\n";
     }
     else {
-      $output .= "<div class=\"messages\">\n";
+      $output .= "<div class=\"callout\" data-closable>\n";
     }
 
     if (!empty($status_heading[$type])) {
@@ -41,6 +41,9 @@ function zurb_template_status_messages($variables) {
     else {
       $output .= $messages[0];
     }
+
+    // Add close button to messages
+    $output .= '<button class="close-button" aria-label="Dismiss alert" type="button" data-close><span aria-hidden="true">&times;</span></button>';
 
     $output .= "</div>\n";
   }
