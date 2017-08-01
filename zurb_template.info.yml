@@ -4,7 +4,7 @@ description: A Drupal 8 theme based on ZURB Template powered by ZURB Foundation 
 core: 8.x
 
 # Screenshot as seen on admin/appearance
-screenshot: dist/assets/images/screenshot.jpg
+screenshot: screenshot.png
 
 # Libraries
 libraries:
@@ -15,6 +15,7 @@ base theme: classy
 
 # Remove conflicting Classy base theme CSS files
 stylesheets-remove:
+  - core/themes/classy/css/components/button.css
   - core/themes/classy/css/components/menu.css
 
 # Regions
