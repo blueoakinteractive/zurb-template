@@ -3,6 +3,7 @@ global:
   css:
     base:
       dist/assets/css/foundation.min.css: {}
+      dist/assets/css/foundation-prototype.min.css: {}
       dist/assets/css/motion-ui.min.css: {}
       dist/assets/css/zurb-template.css: {}
   js:
