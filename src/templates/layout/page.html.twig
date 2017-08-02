@@ -56,9 +56,7 @@
     <div class="off-canvas-content" data-off-canvas-content>
 
       {% if top_bar %}
-        {% if top_bar_contain %}<div class="grid-container">{% endif %}
-          {{ top_bar }}
-        {% if top_bar_contain %}</div>{% endif %}
+        {{ top_bar }}
       {% endif %}
 
       {% if linked_site_name or linked_logo or show_account_info %}

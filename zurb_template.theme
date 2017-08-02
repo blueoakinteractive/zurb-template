@@ -84,11 +84,6 @@ function zurb_template_preprocess_page(array &$variables) {
     $variables['top_bar'] = $main_menu_block_content;
   }
 
-  $top_bar_contain = theme_get_setting('zurb_template_top_bar_grid');
-  if (!empty($top_bar_contain)) {
-    $variables['top_bar_contain'] = 1;
-  }
-
   // Create / Pass Variables for static header to page.html.twig templates.
   $site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal::config('system.site')->get('name');
   $logo = theme_get_setting('logo.url');

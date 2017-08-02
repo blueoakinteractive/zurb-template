@@ -85,9 +85,12 @@ function zurb_template_preprocess_menu__main(&$variables) {
       $top_bar_attributes->addClass('hide-for-medium');
     }
 
+    if (!empty(theme_get_setting('zurb_template_top_bar_grid'))) {
+      $top_bar_attributes->addClass('grid-container');
+    }
+
     $variables['top_bar_attributes'] = $top_bar_attributes;
     $variables['top_bar_menu_text'] = theme_get_setting('zurb_template_top_bar_menu_text');
-
 
     if ($back_text = theme_get_setting('zurb_template_top_bar_back_text')) {
       $variables['attributes']['data-back-button'] = "<li class=\"js-drilldown-back\"><a>{$back_text}</a></li>";
