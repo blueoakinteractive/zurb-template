@@ -67,10 +67,6 @@ function zurb_template_preprocess_menu__main(&$variables) {
   if ($variables['top_bar'] = theme_get_setting('zurb_template_top_bar_enable')) {
     $top_bar_attributes = new \Drupal\Core\Template\Attribute();
 
-    if (theme_get_setting('zurb_template_top_bar_grid')) {
-      $top_bar_attributes->addClass('contain-to-grid');
-    }
-
     if (theme_get_setting('zurb_template_top_bar_sticky')) {
       $top_bar_attributes->addClass('sticky', 'large-12');
       $top_bar_attributes->setAttribute('data-sticky', TRUE);
@@ -86,7 +82,7 @@ function zurb_template_preprocess_menu__main(&$variables) {
     }
 
     if ($variables['top_bar'] == 2) {
-      $top_bar_attributes->addClass('show-for-small');
+      $top_bar_attributes->addClass('hide-for-medium');
     }
 
     $variables['top_bar_attributes'] = $top_bar_attributes;

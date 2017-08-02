@@ -55,17 +55,11 @@
 
     <div class="off-canvas-content" data-off-canvas-content>
 
-      <header class="l-header" role="banner" aria-label="{{ 'Site header'|t }}">
-        {% if page.header %}
-          <div class="grid-container grid-container-padded">
-            <div class="grid-x">
-              <div class="large-12 cell">
-                {{ page.header }}
-              </div>
-            </div>
-          </div>
-        {% endif %}
-      </header>
+      {% if top_bar %}
+        {% if top_bar_contain %}<div class="grid-container">{% endif %}
+          {{ top_bar }}
+        {% if top_bar_contain %}</div>{% endif %}
+      {% endif %}
 
       {% if linked_site_name or linked_logo or show_account_info %}
         <br />
@@ -101,6 +95,18 @@
           </div>
         </div>
       {% endif %}
+
+      <header class="l-header" role="banner" aria-label="{{ 'Site header'|t }}">
+        {% if page.header %}
+          <div class="grid-container grid-container-padded">
+            <div class="grid-x">
+              <div class="large-12 cell">
+                {{ page.header }}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </header>
 
       {% if page.help %}
         <div class="l-help grid-container grid-container-padded">

@@ -6,6 +6,7 @@
  */
 
 use Drupal\node\Entity\Node;
+use Drupal\block\Entity\Block;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Link;
 
@@ -72,10 +73,24 @@ function zurb_template_page_attachments_alter(array &$page) {
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function zurb_template_preprocess_page(array &$variables) {
+  // Pass Top Bar value from theme settings to page.html.twig for rendering.
+  $top_bar = theme_get_setting('zurb_template_top_bar_enable');
+
+  if (!empty($top_bar)) {
+    $main_menu_block = Block::load('zurb_template_main_menu');
+    $main_menu_block_content = \Drupal::entityTypeManager()
+      ->getViewBuilder('block')
+      ->view($main_menu_block);
+    $variables['top_bar'] = $main_menu_block_content;
+  }
+
+  $top_bar_contain = theme_get_setting('zurb_template_top_bar_grid');
+  if (!empty($top_bar_contain)) {
+    $variables['top_bar_contain'] = 1;
+  }
+
+  // Create / Pass Variables for static header to page.html.twig templates.
   $site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal::config('system.site')->get('name');
-
-  $variables['logo_img'] = '';
-
   $logo = theme_get_setting('logo.url');
 
   if (!empty($logo)) {
