@@ -72,6 +72,49 @@ function zurb_template_page_attachments_alter(array &$page) {
  * Implements hook_preprocess_page() for page.html.twig.
  */
 function zurb_template_preprocess_page(array &$variables) {
+  $site_name = isset($variables['site_name']) ? $variables['site_name'] : \Drupal::config('system.site')->get('name');
+
+  $variables['logo_img'] = '';
+
+  $logo = theme_get_setting('logo.url');
+
+  if (!empty($logo)) {
+    $elements = array(
+      '#theme' => 'image',
+      '#uri' => $logo,
+      '#attributes' => array(
+        'alt' => strip_tags($site_name) . ' ' . t('logo'),
+        'title' => strip_tags($site_name) . ' ' . t('Home'),
+        'class' => array('logo'),
+      )
+    );
+
+    $variables['logo_img'] = $elements;
+  }
+
+  $title = strip_tags($site_name) . ' ' . t('Home');
+  $url = \Drupal\Core\Url::fromRoute('<front>');
+  $url->setOption('attributes', array('title' => $title));
+
+  if (theme_get_setting('zurb_template_page_site_logo')) {
+    $variables['linked_logo'] = '';
+    if (!empty($variables['logo_img'])) {
+      $variables['linked_logo'] = Link::fromTextAndUrl($variables['logo_img'], $url)->toString();
+    }
+  }
+
+  if (theme_get_setting('zurb_template_page_site_name')) {
+    $variables['linked_site_name'] = '';
+    if (!empty($site_name)) {
+      $variables['linked_site_name'] = Link::fromTextAndUrl($site_name, $url)->toString();
+    }
+  }
+
+  // Make sure site_name is always set, in case there's only a default.
+  $variables['site_name'] = $site_name;
+
+  // Variable to disable hard-coded login elements.
+  $variables['show_account_info'] = theme_get_setting('zurb_template_page_account_info');
 
 }
 
