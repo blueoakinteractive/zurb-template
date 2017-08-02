@@ -120,8 +120,8 @@ function zurb_template_preprocess_menu__main(&$variables) {
           ->getForm('Drupal\search\Form\SearchBlockForm');
 
         // Wrap the search form in proper Top Bar classes.
-        $search_form['#prefix'] = '<ul class="right"><li class="has-form">';
-        $search_form['#suffix'] = '</ul></li>';
+        $search_form['#prefix'] = '<li>';
+        $search_form['#suffix'] = '</li>';
 
         $variables['top_bar_search'] = $search_form;
       }
