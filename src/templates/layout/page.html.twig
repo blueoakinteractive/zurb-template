@@ -57,7 +57,7 @@
 
       <header class="l-header" role="banner" aria-label="{{ 'Site header'|t }}">
         {% if page.header %}
-          <div class="grid-container">
+          <div class="grid-container grid-container-padded">
             <div class="grid-x">
               <div class="large-12 cell">
                 {{ page.header }}
@@ -67,59 +67,43 @@
         {% endif %}
       </header>
 
-      <div class="grid-container">
-        <div class="grid-x">
-          {% if linked_site_name or linked_logo %}
-            <div class="large-2 columns">
-              {% if linked_logo %}
-                {{ linked_logo }}
-              {% endif %}
-            </div>
-            <div class="left large-4 columns">
-              {% if is_front %}
-                <h1 id="site-name">{{ linked_site_name }}</h1>
-              {% else %}
-                <div id="site-name">{{ linked_site_name }}</div>
-              {% endif %}
-            </div>
-          {% endif %}
-          {% if show_account_info %}
-            <div class="{{ site_slogan ? 'large-6' : 'large-4 columns large-offset-8' }} columns hide-for-small">
-              <p>
-                {% if logged_in %}
-                  <a href="{{ path('user.page') }}">{{ 'My Account'|t }}</a>
-                  <a href="{{ path('user.logout') }}">{{ 'Logout'|t }}</a>
-                {% else %}
-                  <a href="{{ path('user.login') }}">{{ 'Login'|t }}</a>
-                  <a href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a>
+      {% if linked_site_name or linked_logo or show_account_info %}
+        <br />
+        <div class="grid-container grid-container-padded">
+          <div class="grid-x grid-margin-y">
+            {% if linked_site_name or linked_logo %}
+              <div class="large-2 cell">
+                {% if linked_logo %}
+                  {{ linked_logo }}
                 {% endif %}
-              </p>
-            </div>
-          {% endif %}
-          {% if site_slogan %}
-            <div class="large-6 columns hide-for-small">
-              {{ site_slogan }}
-            </div>
-          {% endif %}
-          {% if show_account_info %}
-          <div class="show-for-small">
-            <div class="six mobile-two columns">
-              <p>
-                <a href="{{ path('user.login') }}" class="radius button">{{ 'Login'|t }}</a>
-              </p>
-            </div>
-            <div class="six mobile-two columns">
-              <p>
-                <a href="{{ path('user.register') }}" class="radius success button">{{ 'Sign Up'|t }}</a>
-              </p>
-            </div>
+              </div>
+              <div class="large-7 cell">
+                {% if is_front %}
+                  <h1 class="h4 margin-horizontal-1" id="site-name">{{ linked_site_name }}</h1>
+                {% else %}
+                  <div class="h4 margin-horizontal-1" id="site-name">{{ linked_site_name }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+            {% if show_account_info %}
+              <div class="small-12 large-3 cell">
+                <div class="button-group small expanded">
+                  {% if logged_in %}
+                    <a class="button" href="{{ path('user.page') }}">{{ 'My Account'|t }}</a>
+                    <a class="button secondary" href="{{ path('user.logout') }}">{{ 'Logout'|t }}</a>
+                  {% else %}
+                    <a class="button" href="{{ path('user.login') }}">{{ 'Login'|t }}</a>
+                    <a class="button secondary" href="{{ path('user.register') }}">{{ 'Sign Up'|t }}</a>
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
           </div>
-        {% endif %}
         </div>
-      </div>
+      {% endif %}
 
       {% if page.help %}
-        <div class="l-help grid-container">
+        <div class="l-help grid-container grid-container-padded">
           <div class="grid-x">
             <div class="large-12 cell">
               {{ page.help }}
@@ -128,7 +112,7 @@
         </div>
       {% endif %}
 
-      <div class="l-main grid-container">
+      <div class="l-main grid-container grid-container-padded">
         <div class="grid-x">
           <main id="main" class="large-12 cell" role="main">
             {% if page.highlighted %}
@@ -145,7 +129,7 @@
         </div>
       </div>
 
-      <div class="l-footer grid-container">
+      <div class="l-footer grid-container grid-container-padded">
         <div class="grid-x">
           <div class="large-12 cell">
             &copy; {{ "now"|date('Y') }} {{ site_name }} {{ 'All rights reserved.'|t }}
