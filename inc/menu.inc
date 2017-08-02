@@ -10,13 +10,13 @@ function zurb_template_menu_local_tasks(&$variables) {
 
   if (!empty($variables['primary'])) {
     $variables['primary']['#prefix'] = '<h2 class="visually-hidden">' . t('Primary tabs') . '</h2>';
-    $variables['primary']['#prefix'] .= '<div class="button-group">';
+    $variables['primary']['#prefix'] .= '<div class="button-group small stacked-for-small">';
     $variables['primary']['#suffix'] = '</div>';
     $output .= \Drupal::service('renderer')->render($variables['primary']);
   }
   if (!empty($variables['secondary'])) {
     $variables['secondary']['#prefix'] = '<h2 class="visually-hidden">' . t('Secondary tabs') . '</h2>';
-    $variables['secondary']['#prefix'] .= '<div class="button-group">';
+    $variables['secondary']['#prefix'] .= '<div class="button-group tiny stacked-for-small">';
     $variables['secondary']['#suffix'] = '</div>';
     $output .= \Drupal::service('renderer')->render($variables['secondary']);
   }
@@ -128,5 +128,18 @@ function zurb_template_preprocess_menu__main(&$variables) {
       }
     }
 
+  }
+}
+
+/**
+ * Implements hook_preprocess_links().
+ */
+function zurb_template_preprocess_links(&$variables) {
+  // Add button class to link items.
+  if (!empty($variables['links'])) {
+    foreach ($variables['links'] as $link_key => $link) {
+      $link['link']['#options']['attributes']['class'][] = 'button';
+      $variables['links'][$link_key] = $link;
+    }
   }
 }
