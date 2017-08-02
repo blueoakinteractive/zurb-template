@@ -11,6 +11,5 @@ function zurb_template_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
     $form['actions']['submit']['#attributes']['class'][] = 'success';
     $form['actions']['submit']['#attributes']['class'][] = 'button';
-    $form['actions']['submit']['#attributes']['class'][] = 'radius';
   }
 }
