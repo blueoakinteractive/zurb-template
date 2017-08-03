@@ -16,10 +16,10 @@ function zurb_template_form_alter(&$form, &$form_state, $form_id) {
   }
 
   // Pass form_id to children and grand children for creating theme suggestions later.
-  $children = Element::children($form);
+  $children = Element::getVisibleChildren($form);
   foreach ($children as $child) {
     $form[$child]['#parent_form_id'] = $form_id;
-    $grand_children = Element::children($form[$child]);
+    $grand_children = Element::getVisibleChildren($form[$child]);
     foreach ($grand_children as $grand_child) {
       $form[$child][$grand_child]['#parent_form_id'] = $form_id;
     }
