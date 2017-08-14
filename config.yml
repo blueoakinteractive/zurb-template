@@ -1,0 +1,22 @@
+# Autoprefixer will make sure your CSS works with these browsers
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+  - "ios >= 7"
+
+# Gulp will reference these paths when it copies files
+PATHS:
+  # Path to dist folder
+  dist: "dist"
+  # Paths to CSS files
+  css:
+    - "node_modules/motion-ui/dist/motion-ui.min.css"
+    - "node_modules/foundation-sites/dist/css/foundation.min.css"
+    - "node_modules/foundation-sites/dist/css/foundation-prototype.min.css"
+    - "src/assets/css/zurb-template.css"
+  # Paths to JavaScript files
+  js:
+    - "node_modules/what-input/dist/what-input.min.js"
+    - "node_modules/motion-ui/dist/motion-ui.min.js"
+    - "node_modules/foundation-sites/dist/js/foundation.min.js"
+    - "src/assets/js/zurb-template.js"
