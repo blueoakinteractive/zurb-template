@@ -6,3 +6,9 @@
 		}
 	}
 }
+
+@include breakpoint(large) {
+	.top-bar .search-block-form {
+		margin-left: 1rem;
+	}
+}

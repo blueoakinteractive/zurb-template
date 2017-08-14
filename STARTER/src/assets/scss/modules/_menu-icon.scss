@@ -8,5 +8,5 @@
 /// @param {Number} $bars [3] - Number of bars in the icon.
 
 .menu-icon {
-	@include hamburger($color: $white, $color-hover: $white, $width: 30px, $height: 25px, $weight: 5px);
+	//@include hamburger($color: $white, $color-hover: $white, $width: 30px, $height: 25px, $weight: 5px);
 }

@@ -13,6 +13,10 @@ libraries:
 # Use ZURB Template as our base theme
 base theme: zurb_template
 
+# Remove ZURB Template base theme CSS and JS files as we will be generating our own
+libraries-override:
+  zurb_template/global: false
+
 # Regions
 regions:
   page_top: 'Page top'

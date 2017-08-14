@@ -4,13 +4,13 @@
 @import 'foundation';
 @import 'motion-ui';
 
-////
-// Foundation Partials
-////
+////////////////////////////////////////
+// Include foundation partials
+////////////////////////////////////////
 @include foundation-global-styles;
 // @include foundation-grid;
-@include foundation-flex-grid;
-//@include foundation-xy-grid-classes;
+//@include foundation-flex-grid;
+@include foundation-xy-grid-classes;
 @include foundation-typography;
 @include foundation-button;
 @include foundation-forms;
@@ -48,8 +48,11 @@
 @include foundation-visibility-classes;
 // @include foundation-float-classes;
 @include foundation-flex-classes;
+@include foundation-prototype-classes;
 
-// @include foundation-prototype-classes;
+////////////////////////////////////////
+// Include motion partials
+////////////////////////////////////////
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
