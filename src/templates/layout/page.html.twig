@@ -65,7 +65,7 @@
         <br />
         <div class="grid-container grid-container-padded">
           <div class="grid-x grid-margin-y">
-            {% if linked_site_name or linked_logo %}
+            {% if linked_site_name and linked_logo %}
               <div class="large-2 cell">
                 {% if linked_logo %}
                   {{ linked_logo }}
@@ -76,6 +76,19 @@
                   <h1 class="h4 margin-horizontal-1" id="site-name">{{ linked_site_name }}</h1>
                 {% else %}
                   <div class="h4 margin-horizontal-1" id="site-name">{{ linked_site_name }}</div>
+                {% endif %}
+              </div>
+            {% elseif linked_site_name or linked_logo %}
+              <div class="large-9 cell">
+                {% if linked_logo %}
+                  {{ linked_logo }}
+                {% endif %}
+                {% if linked_site_name %}
+                  {% if is_front %}
+                    <h1 class="h4" id="site-name">{{ linked_site_name }}</h1>
+                  {% else %}
+                    <div class="h4" id="site-name">{{ linked_site_name }}</div>
+                  {% endif %}
                 {% endif %}
               </div>
             {% endif %}
