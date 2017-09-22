@@ -5,6 +5,57 @@
  * Functions to support theming in the STARTER theme.
  */
 
+use Drupal\Core\Link;
+
+/**
+ * Load template files
+ */
+require_once('inc/form.inc');
+
+/**
+ * Implements theme_menu_local_tasks().
+ */
+function STARTER_menu_local_tasks(&$variables) {
+  $output = '';
+
+  if (!empty($variables['primary'])) {
+    $variables['primary']['#prefix'] = '<h2 class="visually-hidden">' . t('Primary tabs') . '</h2>';
+    $variables['primary']['#prefix'] .= '<div class="button-group small stacked-for-small">';
+    $variables['primary']['#suffix'] = '</div>';
+    $output .= \Drupal::service('renderer')->render($variables['primary']);
+  }
+  if (!empty($variables['secondary'])) {
+    $variables['secondary']['#prefix'] = '<h2 class="visually-hidden">' . t('Secondary tabs') . '</h2>';
+    $variables['secondary']['#prefix'] .= '<div class="button-group tiny stacked-for-small">';
+    $variables['secondary']['#suffix'] = '</div>';
+    $output .= \Drupal::service('renderer')->render($variables['secondary']);
+  }
+
+  return $output;
+}
+
+/**
+ * Implements theme_menu_local_task().
+ */
+function STARTER_menu_local_task(&$variables) {
+  $link = $variables['element']['#link'];
+  $link_text = array(
+    '#markup' => $link['title'],
+  );
+
+  if (!empty($variables['element']['#active'])) {
+    // Add text to indicate active tab for non-visual users.
+    $link_text['#suffix'] = '<span class="visually-hidden">' . t('(active tab)') . '</span>';
+  }
+
+  $state = !empty($variables['element']['#active']) ? 'active' : 'secondary';
+  $link['url']->setOption('attributes', array('class' => array('button', $state)));
+
+  $a_tag = Link::fromTextAndUrl($link_text, $link['url'])->toString();
+
+  return $a_tag;
+}
+
 /**
  * Implements hook_preprocess_HOOK() for html.html.twig.
  */
