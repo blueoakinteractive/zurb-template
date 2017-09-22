@@ -92,10 +92,6 @@ function zurb_template_preprocess_menu__main(&$variables) {
     $variables['top_bar_attributes'] = $top_bar_attributes;
     $variables['top_bar_menu_text'] = theme_get_setting('zurb_template_top_bar_menu_text');
 
-    if ($back_text = theme_get_setting('zurb_template_top_bar_back_text')) {
-      $variables['attributes']['data-back-button'] = "<li class=\"js-drilldown-back\"><a>{$back_text}</a></li>";
-    }
-
     if (!theme_get_setting('zurb_template_top_bar_is_hover')) {
       $variables['attributes']['data-disable-hover'] = 'true';
     }

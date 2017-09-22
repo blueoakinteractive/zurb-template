@@ -65,20 +65,6 @@ function zurb_template_form_system_theme_settings_alter(&$form, FormStateInterfa
     '#default_value' => theme_get_setting('zurb_template_top_bar_menu_text'),
   );
 
-  $form['topbar']['container']['menu']['zurb_template_top_bar_custom_back_text'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Enable custom back text'),
-    '#description' => t('This is the text that appears to navigate back one level in the dropdown menu. Set this to false and it will pull the top level link name as the back text.'),
-    '#default_value' => theme_get_setting('zurb_template_top_bar_custom_back_text'),
-  );
-
-  $form['topbar']['container']['menu']['zurb_template_top_bar_back_text'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Custom back text'),
-    '#description' => t('Define what you want your custom back text to be.'),
-    '#default_value' => theme_get_setting('zurb_template_top_bar_back_text'),
-  );
-
   // Search settings.
   $form['topbar']['container']['search'] = array(
     '#type' => 'details',
