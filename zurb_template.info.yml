@@ -17,6 +17,11 @@ base theme: classy
 stylesheets-remove:
   - core/themes/classy/css/components/button.css
   - core/themes/classy/css/components/menu.css
+  - core/themes/classy/css/components/tabs.css
+  - core/themes/classy/css/components/form.css
+  - core/themes/classy/css/components/messages.css
+  - core/themes/classy/css/components/user.css
+  - core/themes/classy/css/components/tablesort.css
 
 # Regions
 regions:
