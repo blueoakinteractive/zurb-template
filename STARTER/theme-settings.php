@@ -5,6 +5,8 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -12,6 +14,32 @@ use Drupal\Core\Form\FormStateInterface;
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function STARTER_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  // Build link to style guide.
+  $style_guide_link = Url::fromUri(Drupal::request()->getSchemeAndHttpHost() . '/' . drupal_get_path('theme', 'STARTER') . '/dist/styleguide.html');
+  $link_options = array(
+    'attributes' => array(
+      'class' => array(
+        'button',
+      ),
+      'target' => '_blank',
+    ),
+  );
+  $style_guide_link->setOptions($link_options);
+
+  // Style guide.
+  $form['style_guide'] = array(
+    '#type' => 'details',
+    '#title' => t('Style Guide'),
+    '#description' => t('Bundled with ZURB Template is Style Sherpa, ZURB\'s style guide tool.  To learn more about how you can customize your style guide see <a href=\'https://foundation.zurb.com/sites/docs/style-sherpa.html\' target=\'_blank\'>Style Sherpa Documentation</a>.'),
+  );
+
+  $form['style_guide']['link'] = array(
+    '#type' => 'markup',
+    '#prefix' => '<p>',
+    '#markup' => Link::fromTextAndUrl(t('View Style Guide'), $style_guide_link)->toString(),
+    '#suffix' => '</p>',
+  );
+
   // Foundation Top Bar.
   $form['topbar'] = array(
     '#type' => 'details',
