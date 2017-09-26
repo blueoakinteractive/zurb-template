@@ -61,6 +61,9 @@ function drush_zurb_template_sub_theme($name = NULL, $machine_name = NULL, $desc
   drush_op('rename', "$subtheme_path/STARTER.theme", "$subtheme_path/$machine_name.theme");
   drush_op('rename', "$subtheme_path/config/install/STARTER.settings.yml.txt", "$subtheme_path/config/install/$machine_name.settings.yml");
 
+  // Replaces instances of STARTER_MACHINE in required files to machine name of the theme.
+  drush_op('zurb_template_file_str_replace', "$subtheme_path/package.json", 'STARTER_MACHINE', "$machine_name");
+
   // Replaces instances of STARTER in required files to name of the theme.
   drush_op('zurb_template_file_str_replace', "$subtheme_path/config.yml", 'STARTER', "$name");
   drush_op('zurb_template_file_str_replace', "$subtheme_path/gulpfile.babel.js", 'STARTER', "$machine_name");
@@ -71,9 +74,6 @@ function drush_zurb_template_sub_theme($name = NULL, $machine_name = NULL, $desc
   drush_op('zurb_template_file_str_replace', "$subtheme_path/$machine_name.theme", 'STARTER', "$machine_name");
   drush_op('zurb_template_file_str_replace', "$subtheme_path/config/install/$machine_name.settings.yml", 'STARTER', "$machine_name");
   drush_op('zurb_template_file_str_replace', "$subtheme_path/theme-settings.php", 'STARTER', "$machine_name");
-
-  // Replaces instances of STARTER_MACHINE in required files to machine name of the theme.
-  drush_op('zurb_template_file_str_replace', "$subtheme_path/package.json", 'STARTER_MACHINE', "$machine_name");
 
   // Change the name of the theme.
   drush_op('zurb_template_file_str_replace', "$subtheme_path/$machine_name.info.yml", 'ZURB Template Sub-Theme', "$name");
